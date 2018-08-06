@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <title>Frequency Line-graph Generator by Hao</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
+    <div class="navbar-brand mx-auto py-1">
+      Frequency Line-graph Generator by
+      <span>
+        <a href="http://www.whoishao.com" target="_blank">
+          <img src="./logo.png" width="40" height="40" alt="logo">
+        </a>
+      </span>
+
+    </div>
+  </nav>
+
+  <div class="jumbotron jumbotron-fluid py-4 mb-0">
+    <div class="container">
+      <h1 class="display-4 text-md-center">Graphical Frequency Data for Audio Visualization</h1>
+      <p class="lead text-md-center">
+        1. Select desire frequency range first
+        <br> 2. Play the part of the audio you want to visualize
+        <br> 3. Click Generate button to see the Line-graph
+        <br>
+      </p>
+      <p class="lead text-md-center">Music by
+        <a href="https://ha0beatz.bandcamp.com/track/biohazard" target="_blank">Hao</a>
+      </p>
+      <p class="text-center">
+        <a href="#start" class="text-center btn btn-info">Try it now!</a>
+      </p>
+    </div>
+  </div>
+
+  <main role="main" class="container-fluid" id="start">
+    <div class="row justify-content-center my-2">
+      <h4 class="text-center mb-0">Full Frequency Range Waveform</h4>
+    </div>
+    <div class="row justify-content-center mt-0 mb-4">
+      <canvas class="col"></canvas>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <p class="col-12 col-sm-2 text-center lead my-2">Frequency Slider
+      </p>
+      <input type="range" class="col-12 form-control mx-2" id="myRange">
+    </div>
+    <div class="row justify-content-center">
+      <p class="col-12 col-sm-2 text-center lead my-2">Frequency Range:
+        <span id="value"></span>
+      </p>
+      <p class="col-12 col-md-2 text-center lead my-2">Max Buffer Length:
+        <span id="max"></span>
+      </p>
+    </div>
+    <div id="audio-container" class="row justify-content-center my-4">
+    </div>
+    <div class="row justify-content-center my-4">
+      <div class="btn-group">
+        <button type="button" class="btn btn-lg btn-success" id="play" onclick="play()">Play</button>
+        <button type="button" class="btn btn-lg btn-danger" id="pause" onclick="pause()">Pause</button>
+        <button type="button" class="btn btn-lg btn-primary" id="stop" onclick="stop()">Stop</button>
+      </div>
+    </div>
+    <!-- <div class="row justify-content-center my-4">
+      <div class="btn-group">
+        <button type="button" class="btn btn-lg btn-info">Set Start</button>
+        <button type="button" class="btn btn-lg btn-warning">Set End</button>
+      </div>
+    </div> -->
+    <div class="row justify-content-center">
+      <button class="col-6 col-sm-2 btn btn-lg btn-success mx-2 my-1" onclick="generateGraph()">Generate</button>
+      <button class="col-6 col-sm-2 btn btn-lg btn-primary mx-2 my-1" onclick="reset()">Reset</button>
+    </div>
+    <div class="row justify-content-center my-4">
+      <div id="line-graph"></div>
+    </div>
+  </main>
+
+  <footer class="container-fluid" id="footer">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 text-center">
+        <p>&copy; 2018
+          <a href="http://www.whoishao.com">Haoran Zhang</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js "></script>
+</body>
+
+</html>
